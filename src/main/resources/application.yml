@@ -3,7 +3,7 @@ server:
 
 spring:
   druid:
-    url: jdbc:mysql//139.129.221.100:3306/house_property?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://139.129.221.100:3306/house_property?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
     username: root
     password: 366c71f3147011af
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -13,9 +13,18 @@ spring:
     validationQuery: SELECT 'x'
     timeBetweenEvictionRunsMillis: 60000
     minEvictableIdleTimeMillis: 300000
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER #SpringBoot版本与Swagger版本冲突无法启动 Springfox使用的路径匹配是基于AntPathMatcher的，而Spring Boot 2.6.X使用的是PathPatternMatcher。
 
 mybatis:
   type-aliases-package: com.zeen.graduationdesign.entity
   configuration:
     auto-mapping-behavior: partial
     map-underscore-to-camel-case: true # 开启驼峰映射Result
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

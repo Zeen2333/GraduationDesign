@@ -19,7 +19,7 @@ public class LogFilter implements Filter {
     // 拦截方法时调用
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        logger.info("Request--coming");
+//        logger.info("Request: " + servletRequest);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
