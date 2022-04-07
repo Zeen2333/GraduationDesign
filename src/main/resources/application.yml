@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  druid:
+    url: jdbc:mysql//139.129.221.100:3306/house_property?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: root
+    password: 366c71f3147011af
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    maxActive: 30
+    minIdle: 5
+    maxWait: 10000
+    validationQuery: SELECT 'x'
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+
+mybatis:
+  type-aliases-package: com.zeen.graduationdesign.entity
+  configuration:
+    auto-mapping-behavior: partial
+    map-underscore-to-camel-case: true # 开启驼峰映射Result
